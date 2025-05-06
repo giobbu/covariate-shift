@@ -1,3 +1,7 @@
+[![Python Tests](https://github.com/giobbu/covariate-shift/actions/workflows/python-tests.yml/badge.svg)](https://github.com/giobbu/covariate-shift/actions/workflows/python-tests.yml)
+
+
+
 # Multivariate Shift Detectors
 
 ![Covariate Shift](notebooks/imgs/mmd_pdf_drift_overlap.png?raw=true)
