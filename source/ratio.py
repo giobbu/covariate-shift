@@ -9,21 +9,15 @@ def log_likelihood_kde(data: np.ndarray,
 
 def likelihood_ratio_test_kde(reference_window: np.ndarray, 
                               detection_window: np.ndarray,
-                              bandwidth: float = 0.5, 
-                              alpha: float = 0.05) -> tuple:
+                              bandwidth: float = 0.5) -> tuple:
     """
-    Perform likelihood ratio test for concept drift detection using KDE.
-    
+    Perform a likelihood ratio test using Kernel Density Estimation (KDE) to compare two distributions.
     Args:
-        reference_window: Data from reference period (numpy array)
-        detection_window: Data from detection period (numpy array)
-        bandwidth: Bandwidth parameter for KDE
-        alpha: Significance level
-        
+        reference_window (np.ndarray): Reference data window.
+        detection_window (np.ndarray): Detection data window.
+        bandwidth (float): Bandwidth for the KDE.
     Returns:
-        is_drift: Boolean indicating if drift was detected
-        p_value: P-value of the test
-        lr_statistic: Likelihood ratio test statistic
+        tuple: Likelihood ratio statistic and p-value. 
     """
     # Reshape data for KDE
     ref_data = reference_window.reshape(-1, 1)
@@ -43,6 +37,4 @@ def likelihood_ratio_test_kde(reference_window: np.ndarray,
     # A conservative approach is to use 2 degrees of freedom as in the Gaussian case
     df = 2
     p_value = 1 - stats.chi2.cdf(lr_statistic, df)
-    # Check if drift is detected
-    is_drift = p_value < alpha
-    return is_drift, p_value, lr_statistic
+    return lr_statistic, p_value
