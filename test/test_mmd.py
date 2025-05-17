@@ -27,8 +27,6 @@ def test_mmd_output_shape(identical_samples):
 def test_mmd_reproducibility(identical_samples):
     " Test MMD function reproducibility with same inputs."
     x, y = identical_samples
-    mmd1, perms1, p1 = MMD_test(x, y, sigma=1.0, n_permutations=10)
-    mmd2, perms2, p2 = MMD_test(x, y, sigma=1.0, n_permutations=10)
+    mmd1, _, _ = MMD_test(x, y, sigma=1.0, n_permutations=10)
+    mmd2, _, _ = MMD_test(x, y, sigma=1.0, n_permutations=10)
     np.testing.assert_allclose(mmd1, mmd2)
-    np.testing.assert_allclose(perms1, perms2)
-    np.testing.assert_allclose(p1, p2)

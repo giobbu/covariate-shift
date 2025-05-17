@@ -18,6 +18,7 @@ def permute_and_compute_lr(i: int, ll_null: float,
         i (int): Permutation index.
         ll_null (float): Log-likelihood under the null hypothesis.
         reference_window (np.ndarray): Reference data window.
+        detection_window (np.ndarray): Detection data window.
         bandwidth (float): Bandwidth for the KDE.
     Returns:
         float: Likelihood ratio statistic for the permuted data.
@@ -66,4 +67,4 @@ def LLR_test(reference_window: np.ndarray,
     lr_perms = np.array(lr_perms)
     # p-value: fraction of permutations with LR >= observed LR
     p_value = np.mean(lr_perms >= lr_statistic)
-    return lr_statistic, p_value
+    return lr_statistic, lr_perms, p_value

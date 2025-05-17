@@ -21,7 +21,7 @@ def permutation_test(i: int, z: np.ndarray,
     """
     idx = np.random.permutation(n + m)
     x_perm = z[idx[:n]]
-    y_perm = z[idx[n:]]
+    y_perm = z[idx[m:]]
     k_xx_perm = rbf_kernel(x_perm, x_perm, sigma)
     k_yy_perm = rbf_kernel(y_perm, y_perm, sigma)
     k_xy_perm = rbf_kernel(x_perm, y_perm, sigma)

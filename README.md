@@ -48,7 +48,7 @@ n_permutations (int): Number of permutations for the permutation test. Default i
 """
 bandwidth = 0.5
 n_permutations=1000
-llr_statistic, p_value = LLR_test(x_before, x_after, bandwidth=bandwidth, n_permutations=n_permutations)
+llr_statistic, llr_perms, p_value = LLR_test(x_before, x_after, bandwidth=bandwidth, n_permutations=n_permutations)
 print(f'LLR Statistic: {llr_statistic}, p-value: {p_value}')
 ```
 
