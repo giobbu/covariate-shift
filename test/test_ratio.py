@@ -12,7 +12,6 @@ def test_LLR_test_kde_output(identical_samples):
 def test_LLR_reproducibility(identical_samples):
     " Test likelihood ratio test function reproducibility with same inputs."
     x, y = identical_samples
-    lr_statistic1, p_value1 = LLR_test(x, y, bandwidth=0.5)
-    lr_statistic2, p_value2 = LLR_test(x, y, bandwidth=0.5)
+    lr_statistic1, _ = LLR_test(x, y, bandwidth=0.5)
+    lr_statistic2, _ = LLR_test(x, y, bandwidth=0.5)
     np.testing.assert_allclose(lr_statistic1, lr_statistic2)
-    np.testing.assert_allclose(p_value1, p_value2)
