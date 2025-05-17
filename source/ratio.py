@@ -7,7 +7,7 @@ def log_likelihood_kde(data: np.ndarray,
     """Compute log-likelihood of dataset under the model"""
     return np.sum(kde_model.score_samples(data.reshape(-1, 1)))
 
-def likelihood_ratio_test_kde(reference_window: np.ndarray, 
+def LLR_test(reference_window: np.ndarray, 
                               detection_window: np.ndarray,
                               bandwidth: float = 0.5) -> tuple:
     """
