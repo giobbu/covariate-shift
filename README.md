@@ -54,15 +54,22 @@ print(f'LLR Statistic: {llr_statistic}, p-value: {p_value}')
 
 ## Streaming batch data simulator
 * ### Data stream with simulated mean drifts
-![Simulated Drifts](imgs/drifts_heatmap.png?raw=true)
+![Batch Streaming Animation](imgs/monitoring.gif?raw=true)
 
 * ### Drifts detected with MOVING reference window with LLR-test
 Useful to build adaptive learning models in streaming environments. The learning model is updated or rebuilt as soon as a drift-event is detected.
 ![Moving Window](imgs/drift_detection_moving_reference_window.png?raw=true)
+![P-Value Moving Window](imgs/moving_window_llr_statistic.png?raw=true)
 
 * ### Drifts detected with FIXED reference window with LLR-test
 Useful to monitor automated systems over time either in an offline or online environments. The reference period should be representative.
 ![Fixed Window](imgs/drift_detection_fixed_reference_window.png?raw=true)
+![P-Value Fixed Window](imgs/fixed_window_llr_statistic.png?raw=true)
 
 
-
+## Lambda framework for monitoring covariates in real-time
+### Batch layer: define **Reference Component**
+* Reference distribution
+* Sampling monitoring distributions
+* Distribution of comparisons 
+### Streaming layer: define **Monitoring component**
