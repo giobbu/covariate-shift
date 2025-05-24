@@ -68,10 +68,16 @@ Useful to monitor automated systems over time either in an offline or online env
 
 
 ## Lambda framework for near real-time covariate monitoring
-### Offline layer: define the **Reference Component**
+
+0. ### Offline layer: define the **Reference Component**
 Using data collected offline, perform the following steps:
-* 1. Define the Reference Distribution: select a fixed portion of the offline data to construct a stable covariate distribution representing normal condition.
+* 1. Define the reference distribution: select a fixed portion of the offline data to construct a stable covariate distribution representing normal condition.
 * 2. Simulate streaming data via batch sampling: from the remaining offline data, draw multiple batches to simulate streaming behavior. For each batch, compute the statistic of interest.
-* 3. Model Expected Statistical Variation: Aggregate the statistics to form a distribution that captures the natural variability of the statistic under normal conditions. This distribution serves as a reference and is passed to the streaming layer for real-time monitoring.
-![Batch-Layer](imgs/lambda_batch.gif?raw=true)
-### Streaming layer: define **Monitoring component**
+* 3. Model null distribution: Aggregate the statistics to form a distribution (i.e. Null hypothesis) that captures the natural variability of the statistic under normal conditions. This distribution serves as a reference and is passed to the streaming layer for real-time monitoring.
+![Offline-Layer](imgs/lambda_offline.gif?raw=true)
+
+1. ### Streaming layer: define **Monitoring component**
+For each incoming batch of data in streaming:
+* 1. Compare the current batch against the reference distribution by computing the statistic of interest.
+* 2. Verify where the computed statistic fall within the null distribution derived in the offline layer. If the statistic exceeds a predifined threshold (e.g, quantile(1-$\alpha$)), flag the batch as a potential drift event and trigger an alert.
+![Streaming-Layer](imgs/lambda_streaming.gif?raw=true)
