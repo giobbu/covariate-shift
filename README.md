@@ -67,9 +67,11 @@ Useful to monitor automated systems over time either in an offline or online env
 ![P-Value Fixed Window](imgs/fixed_window_llr_statistic.png?raw=true)
 
 
-## Lambda framework for monitoring covariates in real-time
-### Batch layer: define **Reference Component**
-* Reference distribution
-* Sampling monitoring distributions
-* Distribution of comparisons 
+## Lambda framework for near real-time covariate monitoring
+### Offline layer: define the **Reference Component**
+Using data collected offline, perform the following steps:
+* 1. Define the Reference Distribution: select a fixed portion of the offline data to construct a stable covariate distribution representing normal condition.
+* 2. Simulate streaming data via batch sampling: from the remaining offline data, draw multiple batches to simulate streaming behavior. For each batch, compute the statistic of interest.
+* 3. Model Expected Statistical Variation: Aggregate the statistics to form a distribution that captures the natural variability of the statistic under normal conditions. This distribution serves as a reference and is passed to the streaming layer for real-time monitoring.
+![Batch-Layer](imgs/lambda_batch.gif?raw=true)
 ### Streaming layer: define **Monitoring component**
