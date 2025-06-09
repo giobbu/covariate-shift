@@ -62,7 +62,7 @@ Useful to build adaptive learning models in streaming environments. The learning
 ![P-Value Moving Window](imgs/moving_window_llr_statistic.png?raw=true)
 
 * ### Drifts detected with FIXED reference window with LLR-test
-Useful to monitor automated systems over time either in an offline or online environments. The reference period should be representative.
+Useful to monitor automated systems and identify the full duration of the concept drift. The reference period should be representative.
 ![Fixed Window](imgs/drift_detection_fixed_reference_window.png?raw=true)
 ![P-Value Fixed Window](imgs/fixed_window_llr_statistic.png?raw=true)
 
